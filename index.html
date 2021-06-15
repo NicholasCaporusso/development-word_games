@@ -61,13 +61,13 @@
 		$(document).on('click','.btn-generate',function(){
 			$.getScript('locale/'+$('#language').val()+'.js',function(){
 			   allWords=words.filter(onlyUnique);
+			   shuffle(allWords);
+			   if($('#number').val().length==0) $('#number').val(2);
+			   let number=parseInt($('#number').val());
+			   let selected=[];
+			   for(let i=0;i<number;i++) selected.push(allWords[i].toUpperCase());
+			   $('#unique').html('<h3>Your words are:</h3><h1>'+selected.join('<br />')+'</strong></h1>');
 			});
-		   shuffle(allWords);
-		   if($('#number').val().length==0) $('#number').val(2);
-		   let number=parseInt($('#number').val());
-		   let selected=[];
-		   for(let i=0;i<number;i++) selected.push(allWords[i].toUpperCase());
-		   $('#unique').html('<h3>Your words are:</h3><h1>'+selected.join('<br />')+'</strong></h1>');
 		});
 	</script>
   </body>
